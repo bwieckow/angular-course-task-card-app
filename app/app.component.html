@@ -1,20 +1,31 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 offset-md-3">  <!-- col-md-6 means that it will take half of space but offset-md-3 means that we start from 3rd place of 12 -->
+        <div class="col-md-6 offset-md-3">
+            <!-- col-md-6 means that it will take half of space but offset-md-3 means that we start from 3rd place of 12 -->
             <form class="form-inline" (ngSubmit)="addTask()" #taskForm="ngForm">
                 <div class="form-group">
                     <label for="content-field" class="sr-only"></label>
-                    <input type="text" class="form-control" id="content-field" required placeholder="Enter a task..." [(ngModel)]="currentTask.content" name="content">
+                    <input type="text" class="form-control" id="content-field" required placeholder="Enter a task..."
+                           [(ngModel)]="currentTask.content" name="content">
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="taskForm.form.invalid"><i class="fa fa-plus" aria-hidden="true"></i>Add Task</button>
+                <button type="submit" class="btn btn-primary" [disabled]="taskForm.form.invalid"><i class="fa fa-plus"
+                                                                                                    aria-hidden="true"></i>Add
+                    Task
+                </button>
             </form>
         </div>
     </div>
     <div class="row">
-        <app-card *ngFor="let task of tasks" [task]="task"></app-card>  <!-- @Input task from task.ts class will take properties from task1 instance from app.component.ts -->
-        <h5 *ngIf="tasks.length == 0">
-            <p>Task list is empty</p>
-            <p>Add new tasks using the form above</p>
-        </h5>
+        <div class="col-md-3">
+            <weather-widget></weather-widget>
+        </div>
+        <div class="col-md-6">
+            <app-card *ngFor="let task of tasks" [task]="task"></app-card>
+            <!-- @Input task from task.ts class will take properties from task1 instance from app.component.ts -->
+            <h5 *ngIf="tasks.length == 0">
+                <p>Task list is empty</p>
+                <p>Add new tasks using the form above</p>
+            </h5>
+        </div>
     </div>
 </div>
